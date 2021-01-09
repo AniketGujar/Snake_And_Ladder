@@ -2,17 +2,19 @@ console.log("Welcome to the Snake And Ladder Game..!!");
 
 let playerPosition = 0;
 const WINNING_POS = 100;
+let diceCount = 0;
 
 class SnakeAndLadder {
 
     rollDice = () => {
         let diceRoll = Math.floor(Math.random() * 6) + 1;
         console.log("Dice Rolled: " + diceRoll);
+        diceCount++;
         return diceRoll;
     }
 
     option = () => {
-        while (playerPosition < 100) {
+        while (playerPosition < WINNING_POS) {
 
             let optionDiceRoll = Math.floor(Math.random() * 3);
             switch (optionDiceRoll) {
@@ -20,9 +22,9 @@ class SnakeAndLadder {
                     console.log("No Play..!! Player at Position: " + playerPosition);
                     break;
                 case 1:
-                    let latestDiceRoll=this.rollDice();
+                    let latestDiceRoll = this.rollDice();
                     playerPosition += latestDiceRoll;
-                    if (playerPosition>100){
+                    if (playerPosition > 100) {
                         playerPosition -= latestDiceRoll;
                     }
                     console.log("Ladder..!! Player at Position: " + playerPosition);
@@ -37,6 +39,7 @@ class SnakeAndLadder {
             }
             console.log("**************************************");
         }
+        console.log("Player Wins...!! \nNumber of times dice rolled = " + diceCount);
     }
 }
 
