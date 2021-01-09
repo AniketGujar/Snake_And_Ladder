@@ -20,7 +20,11 @@ class SnakeAndLadder {
                     console.log("No Play..!! Player at Position: " + playerPosition);
                     break;
                 case 1:
-                    playerPosition += this.rollDice();
+                    let latestDiceRoll=this.rollDice();
+                    playerPosition += latestDiceRoll;
+                    if (playerPosition>100){
+                        playerPosition -= latestDiceRoll;
+                    }
                     console.log("Ladder..!! Player at Position: " + playerPosition);
                     break;
                 case 2:
